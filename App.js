@@ -9,7 +9,6 @@ function App() {
     <View style={styles.container}>
       <Image source={profile} style={styles.profile} />
       <Text> Open up App.js to start working on your app! 
-                HI
       </Text>
       <StatusBar style="auto" />
     </View>
