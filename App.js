@@ -12,9 +12,11 @@ let income = 1000;
 
 function App() {
   const [balence, setBalence] = useState(1000)
+  const [spending, setSpending] = useState(0)
   const { register, handleSubmit, errors, control } = useForm();
   const onSubmit = data => {
-    setBalence(balence - data)
+    setBalence(balence - spending)
+    setSpending(0)
   };
   console.log(errors);
 
@@ -39,7 +41,9 @@ function App() {
               style={styles.input}
               placeholder="I Just Spended..."
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              keyboardType={'numeric'}
+              numeric
+              onChangeText={value => setSpending(value)}
               value={value}
             />
           )}
