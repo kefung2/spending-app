@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React, {useEffect, useState} from "react";
 import 'react-native-gesture-handler';
-import { Image, StyleSheet, Text, TouchableOpacity, View, Button } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View, Button, Keyboard } from "react-native";
 import profile from './assets/profile.png';
 import { TextInput } from "react-native-gesture-handler";
 import { useForm, Controller } from "react-hook-form";
+import styles from './styles';
 
 //let balence = 10.00;
 //let spending= 0;
@@ -17,8 +18,26 @@ function App() {
   const onSubmit = data => {
     setBalence(balence - spending)
     setSpending(0)
+    this.textInput.clear()
   };
   console.log(errors);
+
+  useEffect(() => {
+    Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+    Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+
+    // cleanup function
+    return () => {
+      Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+      Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+    };
+  }, []);
+
+  const _keyboardDidShow = () => {
+  };
+
+  const _keyboardDidHide = () => {
+  };
 
   return (
     <View style={styles.container}>
@@ -45,6 +64,8 @@ function App() {
               numeric
               onChangeText={value => setSpending(value)}
               value={value}
+              onSubmitEditing={Keyboard.dismiss}
+              ref={input => { this.textInput = input }}
             />
           )}
           name="spending"
@@ -83,73 +104,5 @@ function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 15,
-  },
-  icon: {
-    flex: 1,
-    width: 24,
-    height: 24,
-    left: 5,
-    top: 5,
-    position: 'absolute',
-  },
-  balenceView: {
-    flex: 1,
-    width: 200,
-    height: 10,
-    top: 90,
-    alignItems: "center",
-  },
-  balenceText:{
-    fontSize: 50,
-    fontWeight: "bold",
-    alignSelf:"center",
-  },
-  inputView: {
-    flex: 1,
-    width: 100,
-    height: 10,
-    top: 20,
-  },
-  input: {
-    backgroundColor: 'silver',
-    borderColor: 'black',
-    borderWidth: 1,
-    height: 40,
-    width: 200,
-    padding: 10,
-    borderRadius: 4,
-    alignSelf: "center",
-  },
-  buttonView: {
-    flex: 1,
-    width: 100,
-    height: 10,
-    top: 10,
-  },
-  button: {
-    marginTop: 40,
-    color: 'black',
-    height: 40,
-    backgroundColor: '#ec5990',
-    borderRadius: 4,
-  },
-  profile:{
-    width: 50, 
-    height: 50,
-    position: 'absolute',
-    left: 20,
-    right: 0,
-    top: 30,
-    bottom: 0,
-  }
-});
 
 export default App;
