@@ -4,16 +4,18 @@ import 'react-native-gesture-handler';
 import { Image, StyleSheet, Text, TouchableOpacity, View, Button } from "react-native";
 import profile from './assets/profile.png';
 import { TextInput } from "react-native-gesture-handler";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
-let balence = 10.00;
+//let balence = 10.00;
 //let spending= 0;
 let income = 1000;
 
 function App() {
-  const [spending, setSpending] = useState('')
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+  const [balence, setBalence] = useState(1000)
+  const { register, handleSubmit, errors, control } = useForm();
+  const onSubmit = data => {
+    setBalence(balence - data)
+  };
   console.log(errors);
 
   return (
@@ -29,27 +31,36 @@ function App() {
       </View>
 
       {/* View for input box */}
-      <View style={styles.inboxView}>
-        {/* <TextInput 
-          placeholder="I just spended ..."
-          onChangeText={spending => setSpending(spending)}
-          defaultValue={spending}
-        /> */}
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <View style={styles.inputView}>
+        <Controller         
+          control={control}
+          render={({ onChange, onBlur, value }) => (
+            <TextInput
+              style={styles.input}
+              placeholder="I Just Spended..."
+              onBlur={onBlur}
+              onChangeText={value => onChange(value)}
+              value={value}
+            />
+          )}
+          name="spending"
+        />
+        {/* <form onSubmit={handleSubmit(onSubmit)}>
           <input type="number" placeholder="I Just Spended ..." name="Spending" ref={register}/>
 
           <button type="submit"> Submit </button>
-        </form>
+        </form> */}
 
       </View>
 
       {/* View for button */}
-      {/* <View style={styles.buttonView}>
+      <View style={styles.buttonView}>
         <Button
+          color='black'
           title="Button"
-          onPress={()=> balence = balence - {spending}} // this is not working
+          onPress={handleSubmit(onSubmit)}
         />
-      </View> */}
+      </View>
 
       {/* <Image source={profile} style={styles.profile} />
       <Text> ${balence}</Text>
@@ -89,23 +100,42 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 200,
     height: 10,
-    top: 50,
+    top: 90,
     alignItems: "center",
   },
   balenceText:{
     fontSize: 50,
     fontWeight: "bold",
+    alignSelf:"center",
   },
-  inboxView: {
+  inputView: {
     flex: 1,
     width: 100,
     height: 10,
+    top: 20,
+  },
+  input: {
+    backgroundColor: 'silver',
+    borderColor: 'black',
+    borderWidth: 1,
+    height: 40,
+    width: 200,
+    padding: 10,
+    borderRadius: 4,
+    alignSelf: "center",
   },
   buttonView: {
     flex: 1,
     width: 100,
     height: 10,
     top: 10,
+  },
+  button: {
+    marginTop: 40,
+    color: 'black',
+    height: 40,
+    backgroundColor: '#ec5990',
+    borderRadius: 4,
   },
   profile:{
     width: 50, 
