@@ -10,7 +10,18 @@ import styles from '../styles/Profilestyle';
 function ProfileScreen ({navigation}) {
   return(
     <View style={styles.container}>
-        <Text>Profile Page</Text>
+        {/* View for Profile Pic */}
+        <View style={styles.profileIcon}>
+          <Image source={profile} style={styles.profile} />
+        </View>
+
+        <View style={styles.historyButton}>
+          <Button title='History'/>
+        </View>
+
+        <View style={styles.updateButton}>
+          <Text>View 3</Text>
+        </View>
     </View>
   );
 }
