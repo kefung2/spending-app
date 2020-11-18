@@ -9,9 +9,8 @@ export default StyleSheet.create({
     paddingTop: 15,
   },
   icon: {
-    flex: 1,
-    width: 60,
-    height: 60,
+    width: 70,
+    height: 70,
     left: 5,
     top: 5,
     position: 'absolute',
@@ -61,8 +60,8 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
   profile:{
-    width: 50, 
-    height: 50,
+    width: 60, 
+    height: 60,
     alignSelf:"center",
   }
 });
