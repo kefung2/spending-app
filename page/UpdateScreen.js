@@ -5,7 +5,7 @@ import { Image, Text, TouchableOpacity, View, Button, Keyboard, NativeModules, P
 //import profile from './assets/profile.png';
 import { TextInput } from "react-native-gesture-handler";
 import { useForm, Controller } from "react-hook-form";
-import styles from '../styles';
+import styles from '../styles/Updatestyle';
 
 function UpdateScreen ({navigation}) {
   return(
