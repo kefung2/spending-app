@@ -11,14 +11,15 @@ export default StyleSheet.create({
   profileIcon:{
     flex: 2,
     width: 300,
+    bottom: 40,
     alignSelf:"center",
     justifyContent: 'center',
     borderColor: 'black',
     borderWidth: 1,
   },
   profile:{
-    width: 200, 
-    height: 200,
+    width: 250, 
+    height: 250,
     alignSelf:"center",
     // borderColor: 'black',
     // borderWidth: 1,
@@ -26,6 +27,7 @@ export default StyleSheet.create({
   historyButton:{
     flex: 1,
     width: 200,
+    bottom: 40,
     alignSelf:"center",
     justifyContent: 'center',
     borderColor: 'red',
@@ -34,6 +36,7 @@ export default StyleSheet.create({
   updateButton:{
     flex: 1,
     width: 200,
+    bottom: 105,
     alignSelf:"center",
     justifyContent: 'center',
     borderColor: 'blue',
