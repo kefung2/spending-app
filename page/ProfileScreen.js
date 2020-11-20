@@ -20,7 +20,11 @@ function ProfileScreen ({navigation}) {
         </View>
 
         <View style={styles.updateButton}>
-          <Text>View 3</Text>
+          <Button title='Update Button'
+            onPress={() => {
+              navigation.navigate("Update");
+            }}
+          />
         </View>
     </View>
   );
