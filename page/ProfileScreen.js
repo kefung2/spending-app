@@ -16,7 +16,11 @@ function ProfileScreen ({navigation}) {
         </View>
 
         <View style={styles.historyButton}>
-          <Button title='History'/>
+          <Button title='History'
+            onPress={() => {
+              navigation.navigate("History");
+            }}
+          />
         </View>
 
         <View style={styles.updateButton}>
