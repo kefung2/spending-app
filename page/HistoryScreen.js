@@ -8,9 +8,12 @@ import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/Historystyle';
 
 function HistoryScreen ({navigation}){
-  <View style={styles.container}>
-    <Text> Idea of this page is to keep trach of youe spending history</Text>
-  </View>
+  return(
+    <View style={styles.container}>
+      <Text> Idea of this page is to keep trach of youe spending history</Text>
+    </View>
+  )
 }
+
 
 export default HistoryScreen;

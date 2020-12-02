@@ -14,8 +14,8 @@ export default StyleSheet.create({
     bottom: 40,
     alignSelf:"center",
     justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
+    // borderColor: 'black',
+    // borderWidth: 1,
   },
   profile:{
     width: 250, 
@@ -30,8 +30,8 @@ export default StyleSheet.create({
     bottom: 40,
     alignSelf:"center",
     justifyContent: 'center',
-    borderColor: 'red',
-    borderWidth: 1,
+    // borderColor: 'red',
+    // borderWidth: 1,
   },
   updateButton:{
     flex: 1,
@@ -39,7 +39,7 @@ export default StyleSheet.create({
     bottom: 105,
     alignSelf:"center",
     justifyContent: 'center',
-    borderColor: 'blue',
-    borderWidth: 1,
+    // borderColor: 'blue',
+    // borderWidth: 1,
   }
 });

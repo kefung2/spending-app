@@ -9,12 +9,49 @@ import styles from '../styles/Updatestyle';
 
 function UpdateScreen ({navigation}) {
   const [income, setIncome] = useState(1000);
+  const { register, handleSubmit, errors, control, defaultValue } = useForm();
+  const inputRef = useRef(null);
+  const onSubmit = () => {
+    Keyboard.dismiss;
+    inputRef.current.clear();
+  };
+
   return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
           <View style={styles.income}>
             <Text>Your current income is:</Text>
-            <Text>${income}</Text>
+            <Text style={styles.incomeText}>${income}</Text>
+          </View>
+
+          <View style={styles.inputView}>
+            <Controller
+              control={control}
+              render={({ onChange, onBlur, value }) => (
+                <TextInput
+                  style={styles.input}
+                  defaultValue={""}
+                  placeholder="My New Monthly Income is..."
+                  onBlur={onBlur}
+                  keyboardType={"numeric"}
+                  numeric
+                  onChangeText={(value) => setIncome(value)}
+                  value={value}
+                  onSubmitEditing={Keyboard.dismiss}
+                  ref={inputRef}
+                  
+                />
+              )}
+              name="update"
+            />
+          </View>
+
+          <View style={styles.updateButton}>
+            <Button
+              color="black"
+              title="Done"
+              onPress={handleSubmit(onSubmit)}
+            />
           </View>
       </View>
     </TouchableWithoutFeedback>

@@ -17,7 +17,7 @@ import { useForm, Controller } from "react-hook-form";
 import styles from "../styles/Homestyles";
 
 function HomeScreen({ navigation }) {
-  const [balence, setBalence] = useState(1000);
+  const [balence, setBalence] = useState(10000);
   const [spending, setSpending] = useState(0);
   const { register, handleSubmit, errors, control, defaultValue } = useForm();
   const inputRef = useRef(null);
@@ -81,7 +81,7 @@ function HomeScreen({ navigation }) {
         <View style={styles.buttonView}>
           <Button
             color="black"
-            title="Button"
+            title="Spend"
             onPress={handleSubmit(onSubmit)}
           />
         </View>
